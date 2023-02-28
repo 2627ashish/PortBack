@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = require('./Router/index');
 const cors = require('cors');
-const port = 2963;
+const port = process.env.PORT || 5001;
 const hostname = 'localhost';
 
 
@@ -15,7 +15,7 @@ app.use('/', router);
 
 mongoose.connect(serverDB , {useNewUrlParser : true,useUnifiedTopology : true})
     .then(res => {
-        app.listen(port, hostname, () => {
+        app.listen(port, () => {
             console.log(`Server is running at ${hostname}:${port}`);
         });
     })
